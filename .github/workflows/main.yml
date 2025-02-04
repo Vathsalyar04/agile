@@ -1,0 +1,22 @@
+name: Python Application CI
+
+on: [push, pull_request]  # Runs on push or pull request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'  # Use the latest Python 3 version
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt || echo "No requirements file found"
+
+      - name: Run Python Script
+        run: python x.py  # Runs your x.py script
